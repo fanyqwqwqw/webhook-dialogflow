@@ -13,11 +13,13 @@ def webhook():
     
     # Manejar las intenciones
     if intent == "Saludo":
-        response_text = "¡Hola! ¿Cómo puedo ayudarte hoy?"
+        response_text = "saludo desde webhook"
     elif intent == "Despedida":
-        response_text = "¡Hasta luego! Que tengas un excelente día."
+        response_text = "saludo desde webhook"
+    elif intent == "weswes":
+        response_text = "wuut?"
     else:
-        response_text = "Lo siento, no entiendo esa petición."
+        response_text = f"llegué con {intent}."
     
     # Crear respuesta en el formato requerido por Dialogflow
     return jsonify({
