@@ -14,12 +14,11 @@ def webhook():
     # Manejar las intenciones
     if intent == "Producto":
         response_text = f"1.- tu intento es {intent}."
-
-    if intent == "Categoria":
+    elif intent == "Categoria":
         response_text = f"2.- tu intento es {intent}."
-
     else:
-        response_text = f"llegué con {intent}."
+        response_text = f"El nom de tu intento es --> {intent} <--"
+
     
     # Crear respuesta en el formato requerido por Dialogflow
     return jsonify({
