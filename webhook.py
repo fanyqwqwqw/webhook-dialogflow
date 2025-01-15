@@ -12,12 +12,12 @@ def webhook():
     intent = req.get("queryResult").get("intent").get("displayName")
     
     # Manejar las intenciones
-    if intent == "Saludo":
-        response_text = "saludo desde webhook"
-    elif intent == "Despedida":
-        response_text = "saludo desde webhook"
-    elif intent == "weswes":
-        response_text = "wuut?"
+    if intent == "Producto":
+        response_text = f"1.- tu intento es {intent}."
+
+    if intent == "Categoria":
+        response_text = f"2.- tu intento es {intent}."
+
     else:
         response_text = f"llegué con {intent}."
     
