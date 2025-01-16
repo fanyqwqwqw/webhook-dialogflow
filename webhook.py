@@ -5,24 +5,6 @@ from handlers.generico_handler import manejar_intencion_generica
 
 app = Flask(__name__)
 
-# Función para manejar la intención "Producto"
-def manejar_producto(producto):
-    if producto:
-        return f"1.- tu intento es Producto y el producto es {producto}."
-    else:
-        return "No se especificó un producto."
-
-# Función para manejar la intención "Categoria"
-def manejar_categoria(categoria):
-    if categoria:
-        return f"2.- tu intento es Categoria y la categoría es {categoria}."
-    else:
-        return "No se especificó una categoría."
-
-# Función para manejar otras intenciones generales
-def manejar_intencion_generica(intent, producto):
-    return f"Intento --> {intent} <-- /// Parametro -->{producto}<--"
-
 @app.route('/webhook', methods=['POST'])
 def webhook():
     # Recibir datos del webhook de Dialogflow
