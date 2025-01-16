@@ -1,4 +1,7 @@
 from flask import Flask, request, jsonify
+from handlers.producto_handler import manejar_producto
+from handlers.categoria_handler import manejar_categoria
+from handlers.generico_handler import manejar_intencion_generica
 
 app = Flask(__name__)
 
@@ -11,14 +14,20 @@ def webhook():
     # Extraer la intención
     intent = req.get("queryResult").get("intent").get("displayName")
     
-    # Manejar las intenciones
+    # Extraer los parámetros de la solicitud (los argumentos enviados desde Dialogflow)
+    parameters = req.get("queryResult").get("parameters")
+    
+    # Ahora puedes capturar los valores de los parámetros de acuerdo a la estructura de tu intent
+    producto = parameters.get('producto') if 'producto' in parameters else None
+    categoria = parameters.get('categoria') if 'categoria' in parameters else None
+    
+    # Manejar las intenciones y argumentos, llamando a las funciones correspondientes
     if intent == "Producto":
-        response_text = f"1.- tu intento es {intent}."
+        response_text = manejar_producto(producto)
     elif intent == "Categoria":
-        response_text = f"2.- tu intento es {intent}."
+        response_text = manejar_categoria(categoria)
     else:
-        response_text = f"El nom de tu intento es --> {intent} <--"
-
+        response_text = manejar_intencion_generica(intent, producto)
     
     # Crear respuesta en el formato requerido por Dialogflow
     return jsonify({
