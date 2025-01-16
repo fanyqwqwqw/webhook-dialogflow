@@ -31,7 +31,7 @@ def webhook():
     elif intent == "Categoria":
         response_text = f"2.- tu intento es {intent} y la categoría es {categoria}."
     else:
-        response_text = f"El nombre de tu intento es --> {intent} <--"
+        response_text = f"Intento --> {intent} <-- /// Parametro -->{producto}<--"
     
     # Crear respuesta en el formato requerido por Dialogflow
     return jsonify({
