@@ -22,7 +22,7 @@ def webhook():
     categoria = parameters.get('categoria') if 'categoria' in parameters else None
     
     # Manejar las intenciones y argumentos, llamando a las funciones correspondientes
-    if intent == "Producto":
+    if intent == "Consultar precio de un producto":
         response_text = manejar_producto(producto)
     elif intent == "Categoria":
         response_text = manejar_categoria(categoria)
